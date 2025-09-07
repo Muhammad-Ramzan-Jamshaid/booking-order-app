@@ -1,52 +1,47 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-        </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content=" Today in this blog you will learn how to create a responsive Login & Registration Form in HTML CSS & JavaScript." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+    <title>Login & Signup Form | CodingNepal</title>
+    <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
+    <script src="{{ asset('assets/custom-scripts.js') }}" defer></script>
+  </head>
+  <body>
+    <section class="wrapper">
+      <div class="form signup">
+        <header>Register Now</header>
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <input type="text" name="Username" required placeholder="Username">
+          <input type="email" placeholder="Email address" required name="email" />
+          <input type="password" placeholder="Password" required name="password" />
+          <select name="gender" id=""  class="input100">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+          <div class="checkbox">
+            <input type="checkbox" id="remember" name="remember" />
+            <label for="remember">I read All the instruction carefully and providing accurate information</label>
+          </div>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+          <input type="submit" value="register" />
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
+        
+          </div>
+        </form>
+      </div>
+    </section>
 
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    <script src="{{ asset('assets/javascript.js') }}"></script>
+  </body>
+</html>

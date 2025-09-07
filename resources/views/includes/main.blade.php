@@ -1,8 +1,8 @@
-@include('includes.header');
-@include('includes.navbar');
-@include('includes.herosection');
-@include('includes.about');
-@include('includes.featured');
-@include('includes.use');
-@include('includes.blog');
-@include('includes.footer');
+@include('includes.header')
+@include('includes.navbar')
+@include('includes.herosection')
+@include('includes.about')
+@include('includes.featured')
+@include('includes.use')
+@include('includes.blog')
+@include('includes.footer')
