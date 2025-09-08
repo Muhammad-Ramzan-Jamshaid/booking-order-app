@@ -32,3 +32,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/sections/deleted', [SectionController::class, 'deleted'])->name('sections.deleted');
+Route::post('/sections/{id}/restore', [SectionController::class, 'restore'])->name('sections.restore');
+Route::delete('/sections/{id}/force-delete', [SectionController::class, 'forceDelete'])->name('sections.forceDelete');
+Route::resource('section', SectionController::class)->except(['show']);
