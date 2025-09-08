@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Student; 
+
+use App\Models\Student;  // ✅ Capital S
 use Illuminate\Http\Request;
 
-class sectioncontroller extends Controller
+class Sectioncontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $records = student::all();
-        return view('profile.studentlisting',compact('records'));
+        $records = Student::all();  // ✅ Capital S
+        return view('profile.studentlisting', compact('records'));
     }
 
     /**
@@ -20,7 +21,7 @@ class sectioncontroller extends Controller
      */
     public function create()
     {
-        return view ('profile.studentstore');
+        return view('profile.studentstore');
     }
 
     /**
@@ -28,14 +29,27 @@ class sectioncontroller extends Controller
      */
     public function store(Request $request)
     {
-        $validation = $request->validate([
-            'name'=>'required',
-            'email'=>'required',
-            'gender'=>'required'
-        ]);
 
-        $student = new student();
-        $store = $student->create($request->all());
+
+        $student = new Student();
+        $student->name = $request->name;
+        $student->email = $request->email;
+        $student->password = $request->password; // test ke liye plain rakho
+        $student->gender = $request->gender;
+        $student->save();
+        // $validation = $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'gender' => 'required',
+        //        'password' => 'required|min:6'
+        // ]);
+
+        // $student = Student::create([
+        //     'name'     => $request->name,
+        //     'email'    => $request->email,
+        //     'password' => $request->password,  // test ke liye plain rakho, baad me bcrypt
+        //     'gender'   => $request->gender,
+        // ]); 
         return redirect()->route('section.index')->with('success', 'Record Stored successfully');
     }
 
@@ -44,8 +58,7 @@ class sectioncontroller extends Controller
      */
     public function show(string $id)
     {
-        
-
+        //
     }
 
     /**
@@ -69,7 +82,7 @@ class sectioncontroller extends Controller
      */
     public function destroy(string $id)
     {
-        $student = Student::findOrFail($id);
+        $student = Student::findOrFail($id);  // ✅ Capital S
         $student->delete();
 
         return redirect()->route('section.index')->with('success', 'Record deleted successfully');

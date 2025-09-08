@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('password');
             $table->string('email')->unique();
             $table->enum('gender', ['male', 'female', 'other']);
             $table->timestamps();

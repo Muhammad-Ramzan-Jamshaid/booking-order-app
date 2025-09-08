@@ -17,7 +17,7 @@
         <form method="POST" action="{{ route('section.store') }}">
             @csrf
 
-            <input type="text" name="Username" required placeholder="Username">
+            <input type="text" name="name" required placeholder="Username">
           <input type="email" placeholder="Email address" required name="email" />
           <input type="password" placeholder="Password" required name="password" />
           <select name="gender" id=""  class="input100 ">
@@ -31,7 +31,7 @@
             <label for="remember">I read All the instruction carefully and providing accurate information</label>
           </div>
 
-          <input type="submit" value="register" />
+          <input type="submit" value="register"  />
 
         
           </div>
