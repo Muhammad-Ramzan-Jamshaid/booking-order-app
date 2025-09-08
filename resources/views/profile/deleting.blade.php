@@ -1,52 +1,74 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+                                <html lang="en">
+                                <head>
+                                    <meta charset="UTF-8">
+                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                    <title>Records Listing</title>
+                                    <!-- Bootstrap CSS via CDN -->
+                                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+                                </head>
+                                <body>
+                                <div class="container mt-5">
 
-@section('content')
-<div class="container">
-    <h2>Deleted Students List</h2>
+                                    <h2 class="mb-4 text-center">All Records</h2>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-    @if(session('Deleted'))
-        <div class="alert alert-danger">{{ session('Deleted') }}</div>
-    @endif
+                                    {{-- Session Messages --}}
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Gender</th>
-                <th>Deleted At</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($records as $student)
-                <tr>
-                    <td>{{ $student->id }}</td>
-                    <td>{{ $student->name }}</td>
-                    <td>{{ $student->email }}</td>
-                    <td>{{ $student->gender }}</td>
-                    <td>{{ $student->deleted_at }}</td>
-                    <td>
-                        <!-- Restore button -->
-                        <form action="{{ route('sections.restore', $student->id) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            <button type="submit" class="btn btn-success btn-sm">Restore</button>
-                        </form>
+                                    @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
 
-                        <!-- Force delete button -->
-                        <form action="{{ route('sections.forceDelete', $student->id) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Force Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-@endsection
+                                    {{-- Create Record Button --}}
+                                    <div class="mb-3">
+                                        <a href="{{ route('section.create') }}" class="btn btn-success">Create Record</a>
+
+                                    </div>
+
+                                    {{-- Records Table --}}
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-dark">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Gender</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @forelse($records as $index => $record)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $record->name }}</td>
+                                                <td>{{ $record->email }}</td>
+                                                <td>{{ ucfirst($record->gender) }}</td>
+                                                <td>
+                                                <a href="{{ route('sections.restore', $record->id)}}" class="btn btn-success"> Restore </a>
+                                                <a href="{{ route('sections.forceDelete', $record->id)}}" class="btn btn-secondary"> Delete Forcefully </a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="5" class="text-center">No Records Found</td>
+                                            </tr>
+                                        @endforelse
+                                        </tbody>
+                                    </table>
+
+                                    <div class="mt-3">
+                                        <a href="{{ route('register') }}" class="btn btn-primary">Back to Form</a>
+                                    </div>
+
+                                </div>
+
+                                <!-- Bootstrap JS Bundle via CDN -->
+                                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                                </body>
+                                </html>

@@ -1,4 +1,4 @@
-                                <!DOCTYPE html>
+<!DOCTYPE html>
                                 <html lang="en">
                                 <head>
                                     <meta charset="UTF-8">
@@ -28,6 +28,7 @@
                                     {{-- Create Record Button --}}
                                     <div class="mb-3">
                                         <a href="{{ route('section.create') }}" class="btn btn-success">Create Record</a>
+                                        <a href="{{ route('sections.deleted') }}" class="btn btn-danger">Deleted Record</a>
                                     </div>
 
                                     {{-- Records Table --}}

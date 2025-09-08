@@ -118,18 +118,18 @@ class SectionController extends Controller
 
     public function restore($id)
     {
-        $student = Student::withTrashed()->findOrFail($id);
+        $student = Student::withTrashed()->find($id);
         $student->restore();
 
-        return redirect()->route('sections.deleted')->with('success', 'Student restored successfully!');
+        return redirect()->route('section.index')->with('success', 'Student restored successfully!');
     }
 
     public function forceDelete($id)
     {
-        $student = Student::withTrashed()->findOrFail($id);
+        $student = Student::withTrashed()->find($id);
         $student->forceDelete();
 
-        return redirect()->route('sections.deleted')->with('Deleted', 'Student permanently deleted!');
+        return redirect()->route('section.index')->with('Deleted', 'Student permanently deleted!');
     }
 
     public function create()
