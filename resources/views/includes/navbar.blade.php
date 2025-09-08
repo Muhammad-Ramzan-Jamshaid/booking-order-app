@@ -53,5 +53,7 @@
 
       <a method="post" class="btn btn-outline-success" href="{{ route('login')}}">Login</a>
 
+      <a method="post" class="btn btn-outline-warning" href="{{ route('register')}}">Register</a>
+
     </div>
   </header>

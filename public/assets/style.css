@@ -9,11 +9,12 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f0faff;
+  margin-top: 20px;
 }
 
 .wrapper {
@@ -21,7 +22,7 @@ body {
   max-width: 470px;
   width: 100%;
   border-radius: 12px;
-  padding: 20px 30px 120px;
+  padding: 20px 30px 100px;
   background: #4070f4;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -133,4 +134,11 @@ form input[type="submit"] {
   background: #4070f4;
   color: #fff;
   border: none;
+}
+form select {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 200;
+  color:gray;
+  
 }

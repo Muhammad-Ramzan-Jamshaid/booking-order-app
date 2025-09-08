@@ -1,7 +1,4 @@
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +14,7 @@
     <section class="wrapper">
       <div class="form signup">
         <header>Register Now</header>
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('section.store') }}">
             @csrf
 
             <input type="text" name="Username" required placeholder="Username">
